@@ -5,8 +5,8 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build:lib": "ng-packagr -p projects/ad-button-slide/ng-package.json && cp README.md dist/ad-button-slide/",
-    "deploy:lib": "npm run build:lib && npm publish dist/ad-button-slide",
+    "build:lib": "ng-packagr -p projects/ad-library/ng-package.json && cp README.md dist/ad-library/",
+    "deploy:lib": "npm run build:lib && npm publish dist/ad-library",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
