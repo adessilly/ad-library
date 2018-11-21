@@ -1,0 +1,14 @@
+p {
+  font-family: Lato;
+}
+
+div.bar {
+  background:#efefef;
+  height:50px;
+  margin-bottom: 10px;
+}
+
+h4 {
+  margin:0;
+  font-size:0.8em;
+}

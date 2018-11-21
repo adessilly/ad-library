@@ -1,0 +1,9 @@
+
+<div
+(mouseenter)="mouseOverButton($event)"
+(mouseleave)="mouseOutButton($event)"
+class="btn-slide"
+[class.mini]="mini" #adbuttonslidediv>
+    <span>{{ label }}</span>
+    <i [class]="icon"></i>
+</div>

@@ -1,0 +1,19 @@
+<div
+*ngIf="theme === 'flip'"
+class="flip-button"
+(click)="switchValue()"
+[ngClass]="{'clicked': ngValue}">
+  <div class="flip-button-inner">
+    <div class="flip-button-front">
+      <i *ngIf="iconOff" [class]="iconOff" style="margin-right:3px;"></i>{{ labelOff }}
+    </div>
+    <div class="flip-button-back">
+      <i *ngIf="iconOn" [class]="iconOn" style="margin-right:3px;"></i>{{ labelOn }}
+    </div>
+  </div>
+</div>
+
+<div class="switch-button" *ngIf="theme === 'switch'">
+    <input type="checkbox" name="switch-button" class="switch-button-checkbox" id="myswitch-button" [ngModel]="ngValue" (ngModelChange)="switchValue()">
+    <label class="switch-button-label" for="myswitch-button"></label>
+</div>
