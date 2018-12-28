@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, forwardRef } from '@angular/core';
+import { Component, OnInit, Input, forwardRef, ViewEncapsulation } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
@@ -14,7 +14,8 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   styleUrls: [
     './ad-button-switch-theme-flip.component.css',
     './ad-button-switch-theme-switch.component.css'
-  ]
+  ],
+  encapsulation: ViewEncapsulation.ShadowDom
 })
 export class AdButtonSwitchComponent implements OnInit {
 
