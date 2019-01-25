@@ -14,8 +14,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   styleUrls: [
     './ad-button-switch-theme-flip.component.css',
     './ad-button-switch-theme-switch.component.css'
-  ],
-  encapsulation: ViewEncapsulation.ShadowDom
+  ]
 })
 export class AdButtonSwitchComponent implements OnInit {
 
@@ -24,6 +23,7 @@ export class AdButtonSwitchComponent implements OnInit {
   @Input() iconOn = null;
   @Input() iconOff = null;
   @Input() theme = 'flip';
+  @Input() id;
 
   ngValue: boolean;
 
@@ -32,7 +32,11 @@ export class AdButtonSwitchComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    if (!this.id && this.theme === 'switch') {
+      throw new Error('Attribute id is required for AdSwitchComponent with theme switch');
+    }
+  }
 
   setValueFromComponent(v: boolean) {
     this.ngValue = v;
@@ -59,6 +63,7 @@ export class AdButtonSwitchComponent implements OnInit {
   }
 
   switchValue() {
+    console.log('okk');
     if (this.ngValue === true) {
       this.ngValue = false;
     } else {
