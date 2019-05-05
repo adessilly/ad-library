@@ -12,3 +12,33 @@ h4 {
   margin:0;
   font-size:0.8em;
 }
+
+.btn-loading {
+  outline:none;
+  border: none;
+  background: #007bff;
+  margin-top: .25rem;
+  margin-bottom: .25rem;
+  color: white;
+  font-size: 0.9em;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.btn-loading:hover {
+  color: #fff;
+  background-color: #0069d9;
+  border-color: #0062cc;
+}
+
+.btn-loading:active {
+color: #fff;
+background-color: #0062cc;
+border-color: #005cbf;
+}
+
+.example-panel-form {
+  background:#efefef;
+  padding: 10px;
+}

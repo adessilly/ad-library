@@ -9,4 +9,5 @@ export class AppComponent {
   title = 'ad-library';
   checkValue = false;
   checkValue2 = false;
+  loading = false;
 }

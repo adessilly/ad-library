@@ -38,3 +38,20 @@
 <ad-button-switch [(ngModel)]="checkValue2" theme="switch" id="switch2"></ad-button-switch>
 <ad-button-switch [(ngModel)]="checkValue2" id="flip2" style="display:block;width:110px;margin-bottom:10px;" iconOn="fas fa-check" labelOn="not received" iconOff="fas fa-times" labelOff="received"></ad-button-switch>
 
+<h3>ad-loading</h3>
+
+<h4>usage</h4>
+<p>Put ad-loading inside the componennt you want to see loading, don't forget to set the parent component as position:relative; (or use the class : loadable)</p>
+
+<h4>example</h4>
+<button class="btn-loading" (click)="loading = !loading">toggle loading (loading = {{ loading }})</button>
+<br /><br />
+
+<div class="loadable example-panel-form">
+  my form panel<br />
+  <input type="text" /><br />
+  <input type="text" /><br />
+  <input type="text" /><br />
+  <input type="submit" />
+  <ad-loading [loading]="loading"></ad-loading>
+</div>
