@@ -15,7 +15,7 @@ export class AdButtonSlideComponent implements OnInit {
   @Input() foregroundOver = null;
   @Input() mini = false;
 
-  @ViewChild('adbuttonslidediv') div: ElementRef<any>;
+  @ViewChild('adbuttonslidediv', { static: true }) div: ElementRef<any>;
 
   constructor() { }
 
