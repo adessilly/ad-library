@@ -63,8 +63,7 @@ export class AdButtonSwitchComponent implements OnInit {
   }
 
   switchValue() {
-    console.log('okk');
-    if (this.ngValue === true) {
+    if (this.ngValue) {
       this.ngValue = false;
     } else {
       this.ngValue = true;
