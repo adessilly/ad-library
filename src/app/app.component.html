@@ -55,3 +55,8 @@
   <input type="submit" />
   <ad-loading [loading]="loading"></ad-loading>
 </div>
+
+<h3>ad-select</h3>
+
+<ad-select [values]="select2Values" [ngModel]="select2Selected" id="mySelect"></ad-select>
+<span>selected : {{ select2Selected.text }}</span>
