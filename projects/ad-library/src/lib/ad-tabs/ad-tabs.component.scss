@@ -1,0 +1,56 @@
+
+.ad-tabs {
+
+  & > .ad-tabs-header {
+
+    position: relative;
+    overflow: hidden;
+    overflow-x: auto;
+    display:block;
+    top: 0px;
+    position: relative;
+    position: -webkit-sticky;
+    position: sticky;
+    z-index: 100;
+    white-space: nowrap;
+
+    & > .ad-tabs-tab {
+      display: inline-block;
+      box-sizing: border-box;
+      font-weight: lighter;
+      min-width:200px;
+      text-align:center;
+      cursor: pointer;
+
+      @media only screen and (max-width: 900px) {
+        min-width:150px;
+      }
+      @media only screen and (max-width: 600px) {
+        min-width:70px;
+      }
+      @media only screen and (max-width: 500px) {
+        min-width:40px;
+      }
+
+      & .ad-tabs-tab-icon {
+        margin-right: 7px;
+        @media only screen and (max-width: 900px) {
+          display:block;
+        }
+      }
+
+      & .ad-tabs-tab-label {
+        @media only screen and (max-width: 600px) {
+          display:none;
+        }
+      }
+    }
+
+  }
+
+  & > .ad-tabs-body {
+  }
+
+}
+
+

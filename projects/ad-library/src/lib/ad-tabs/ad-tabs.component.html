@@ -1,0 +1,25 @@
+
+<div class="ad-tabs" [ngClass]="styleClass">
+
+  <div class="ad-tabs-header" [class.ad-tabs-header-admin]="isAdminContext">
+    <ng-container *ngFor="let panel of tabPanels; let i = index;">
+      <div
+        [title]="panel.titleMessage"
+        class="ad-tabs-tab"
+        [class.ad-tabs-tab-disabled]="panel.disabled"
+        [style.min-width]=" (100/tabPanels.length) + '%'"
+        (click)="gotoTab(panel.disabled, i)"
+        [class.ad-tabs-tab-active]="i === currentTab">
+        <i class="ad-tabs-tab-icon" [ngClass]="panel.icon"></i>
+        <span class="ad-tabs-tab-label">{{ panel.label }}</span>
+      </div>
+    </ng-container>
+  </div>
+
+  <ng-container *ngFor="let panel of tabPanels; let i = index">
+    <div class="ad-tabs-body" *ngIf="currentTab === i">
+      <ng-container *ngTemplateOutlet="panel.template"></ng-container>
+    </div>
+  </ng-container>
+
+</div>

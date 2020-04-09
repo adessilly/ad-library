@@ -1,0 +1,47 @@
+
+
+.ad-tabs-theme1 {
+
+  & > .ad-tabs-header {
+
+    & > .ad-tabs-tab {
+      border-bottom: 5px solid #efefef;
+      background: white;
+      padding: 15px;
+
+      &.ad-tabs-tab-disabled {
+        background :#efefef;
+        border-color: #efefef;
+        cursor: default;
+        &:hover {
+          border-color: #efefef;
+          background :#efefef;
+          cursor: default;
+        }
+        &:active {
+          background :#aaa;
+          cursor: default;
+        }
+      }
+
+      &:first-of-type {
+        border-top-left-radius: 5px;
+      }
+
+      &:last-of-type {
+        border-top-right-radius: 5px;
+      }
+
+      &:hover {
+        background: #E2EDF1;
+        border-color: #5EC8ED55;
+      }
+      &.ad-tabs-tab-active {
+        border-color: #5EC8ED;
+        background: #E2EDF1;
+      }
+    }
+
+  }
+
+}

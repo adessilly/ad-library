@@ -17,8 +17,14 @@ import { AdLibraryModule } from 'ad-library';
 @NgModule({
 imports: [ ..., AdLibraryModule ], ...
 ```
-3. (optional) import an icon library like fontawesome (`npm i @fortawesome/fontawesome-free`)
-4. Play with the component :-)
+3. (if you want to use TabsComponent) Import the module : 
+```
+import { AdTabsModule } from 'ad-library';
+@NgModule({
+imports: [ ..., AdTabsModule ], ...
+```
+4. (optional) import an icon library like fontawesome (`npm i @fortawesome/fontawesome-free`)
+5. Play with the component :-)
 
 ```<ad-button-slide icon="fas fa-trash" label="Delete this" background="red"></ad-button-slide>```
 
@@ -54,6 +60,12 @@ Parameters supported by this object:
 ## Example
 
 <iframe src="https://stackblitz.com/edit/ad-library?embed=1&file=src/app/app.component.html&hideNavigation=1&view=preview" style="width:100%;height:400px;border:none;"></iframe>
+
+
+### Tabs
+
+- `ad-tabs-component` - (`AdTabsComponent`) - responsive tabs.
+
 
 ## Test library
 

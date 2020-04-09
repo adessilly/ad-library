@@ -1,0 +1,49 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+  font-family: Verdana, Geneva, sans-serif;
+}
+
+.custom-tabs {
+  & > .ad-tabs-header {
+    margin-bottom: 10px;
+    & > .ad-tabs-tab {
+      padding: 20px;
+      border-top: 5px solid #ffffff;
+      border-color: #00b6b3;
+      background: white;
+      &.ad-tabs-tab-disabled {
+        background :#efefef;
+        border-color: #efefef;
+        cursor: default;
+        &:hover {
+          border-color: #efefef;
+          background :#efefef;
+          cursor: default;
+        }
+        &:active {
+          background :#aaa;
+          cursor: default;
+        }
+      }
+
+      &:hover {
+        border-color: #55555555;
+        background: #eeeeee;
+      }
+
+      &.ad-tabs-tab-active {
+        border-color: #00000066;
+        background: #00b6b3;
+        color: white;
+      }
+    }
+  }
+
+  & > .ad-tabs-body {
+    background: #aaa;
+    padding: 20px;
+    color: white;
+    min-height: 700px;
+  }
+
+}

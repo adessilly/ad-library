@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { AdLibraryModule } from 'projects/ad-library/src/public_api';
+import { AdLibraryModule, AdTabsModule } from 'projects/ad-library/src/public_api';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -10,7 +10,7 @@ import { FormsModule } from '@angular/forms';
     AppComponent
   ],
   imports: [
-    BrowserModule, AdLibraryModule, FormsModule
+    BrowserModule, AdLibraryModule, AdTabsModule, FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

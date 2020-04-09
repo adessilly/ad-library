@@ -41,14 +41,14 @@
 <h3>ad-loading</h3>
 
 <h4>usage</h4>
-<p>Put ad-loading inside the componennt you want to see loading, don't forget to set the parent component as position:relative; (or use the class : loadable)</p>
+<p>Put ad-loading inside the component you want to see loading, don't forget to set the parent component as position:relative; (or use the class : loadable)</p>
 
 <h4>example</h4>
 <button class="btn-loading" (click)="loading = !loading">toggle loading (loading = {{ loading }})</button>
 <br /><br />
 
 <div class="loadable example-panel-form">
-  my form panel<br />
+  my form<br />
   <input type="text" /><br />
   <input type="text" /><br />
   <input type="text" /><br />
@@ -60,3 +60,40 @@
 
 <ad-select [values]="select2Values" [(ngModel)]="select2Selected" id="mySelect"></ad-select>
 <span>selected : {{ select2Selected.text }}</span>
+
+<h3>ad-tabs</h3>
+<div style="position: relative;background: #efefef;padding: 20px;border-radius: 10px;">
+  <ad-tabs>
+    <ad-tab-panel icon="fas fa-user" label="tab 1" [withStyle]="true">
+      Panel tab 1 (with default style)
+    </ad-tab-panel>
+    <ad-tab-panel icon="fas fa-home" label="tab 2">
+      <div class="custom-tab-panel">Panel tab 2 (with custom css style)</div>
+    </ad-tab-panel>
+    <ad-tab-panel icon="fas fa-key" label="tab 3">
+      <div class="custom-tab-panel2">Panel tab 3</div>
+    </ad-tab-panel>
+    <ad-tab-panel icon="fas fa-key" label="tab 4 disabled" [disabled]="true">
+      Panel tab 4
+    </ad-tab-panel>
+  </ad-tabs>
+</div>
+
+<h3>ad-tabs with custom theme</h3>
+<div style="position: relative;">
+  <ad-tabs styleClass="custom-tabs">
+    <ad-tab-panel icon="fas fa-user" label="tab 1">
+      Panel tab 1
+    </ad-tab-panel>
+    <ad-tab-panel icon="fas fa-home" label="tab 2">
+      Panel tab 2
+    </ad-tab-panel>
+    <ad-tab-panel icon="fas fa-key" label="tab 3">
+      Panel tab 3
+    </ad-tab-panel>
+    <ad-tab-panel icon="fas fa-key" label="tab 4 disabled" [disabled]="true">
+      Panel tab 4
+    </ad-tab-panel>
+  </ad-tabs>
+</div>
+
