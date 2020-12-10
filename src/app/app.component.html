@@ -1,9 +1,9 @@
 <h3>ad-button-slide</h3>
 
 <h4>With text-align:left (button edit with backgroundOver)</h4>
-<div class="bar">
+<div class="bar" (click)="askConsultRow()">
 
-  <ad-button-slide icon="fas fa-trash" label="Delete this" background="#c3615f"></ad-button-slide>
+  <ad-button-slide icon="fas fa-trash" label="Delete this" background="#c3615f" (click)="askDelete()"></ad-button-slide>
   <ad-button-slide icon="fas fa-pencil-alt" label="Edit this" background="#5f82c3" backgroundOver="#5f82c399" foregroundOver="#333"></ad-button-slide>
   <ad-button-slide icon="fas fa-plus" label="Add this" background="#55c16c"></ad-button-slide>
 

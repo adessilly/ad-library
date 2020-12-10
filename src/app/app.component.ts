@@ -21,6 +21,13 @@ export class AppComponent {
     this.select2Selected
   ];
 
+  askDelete() {
+    console.log('ask delete');
+  }
+
+  askConsultRow() {
+    console.log('ask consult row');
+  }
 
 
 }

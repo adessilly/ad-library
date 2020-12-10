@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef, HostListener } from '@angular/core';
 
 @Component({
   selector: 'ad-button-slide',
@@ -13,9 +13,18 @@ export class AdButtonSlideComponent implements OnInit {
   @Input() backgroundOver = null;
   @Input() foreground = 'white';
   @Input() foregroundOver = null;
-  @Input() mini = false;
+  @Input() mini = true;
+
+  @Input() stopPropagation = true;
 
   @ViewChild('adbuttonslidediv', { static: true }) div: ElementRef<any>;
+
+  @HostListener('click', ['$event'])
+  public onClick(event: MouseEvent): void {
+    if(this.stopPropagation) {
+      event.stopPropagation();
+    }
+  }
 
   constructor() { }
 
