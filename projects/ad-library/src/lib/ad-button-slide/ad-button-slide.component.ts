@@ -13,7 +13,7 @@ export class AdButtonSlideComponent implements OnInit {
   @Input() backgroundOver = null;
   @Input() foreground = 'white';
   @Input() foregroundOver = null;
-  @Input() mini = true;
+  @Input() mini = false;
 
   @Input() stopPropagation = true;
 
