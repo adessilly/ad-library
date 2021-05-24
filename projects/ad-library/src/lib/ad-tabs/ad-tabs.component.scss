@@ -1,7 +1,7 @@
 
-.ad-tabs {
+.comp-tabs {
 
-  & > .ad-tabs-header {
+  & > .comp-tabs-header {
 
     position: relative;
     overflow: hidden;
@@ -14,7 +14,7 @@
     z-index: 100;
     white-space: nowrap;
 
-    & > .ad-tabs-tab {
+    & > .comp-tabs-tab {
       display: inline-block;
       box-sizing: border-box;
       font-weight: lighter;
@@ -32,14 +32,14 @@
         min-width:40px;
       }
 
-      & .ad-tabs-tab-icon {
+      & .comp-tabs-tab-icon {
         margin-right: 7px;
         @media only screen and (max-width: 900px) {
           display:block;
         }
       }
 
-      & .ad-tabs-tab-label {
+      & .comp-tabs-tab-label {
         @media only screen and (max-width: 600px) {
           display:none;
         }
@@ -48,7 +48,7 @@
 
   }
 
-  & > .ad-tabs-body {
+  & > .comp-tabs-body {
   }
 
 }

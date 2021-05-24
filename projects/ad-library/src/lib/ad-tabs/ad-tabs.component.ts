@@ -11,7 +11,7 @@ export class AdTabsComponent implements AfterViewInit {
   @Input() currentTab = 0;
   @Output() currentTabChange: EventEmitter<number> = new EventEmitter<number>();
   @Input() isAdminContext = false;
-  @Input() styleClass = 'ad-tabs-theme1';
+  @Input() styleClass = 'comp-tabs-theme1';
 
   @ContentChildren(AdTabPanelComponent)
   tabPanels: QueryList<AdTabPanelComponent>;
