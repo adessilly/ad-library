@@ -58,7 +58,7 @@ export class AdSelectComponent implements AfterContentInit, ControlValueAccessor
 
               let valArray: Object[] = [];
               for (const item of event) {
-                  if (item.value) {
+                  if (item.value !== undefined) {
                       valArray = [...valArray, item.value];
                   } else {
                       valArray = [...valArray, item];
