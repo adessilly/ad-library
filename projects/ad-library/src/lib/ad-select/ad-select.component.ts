@@ -69,7 +69,7 @@ export class AdSelectComponent implements AfterContentInit, ControlValueAccessor
 
           } else {
 
-              if (event.value) {
+              if (event.value !== undefined) {
                   this.setValueFromSelect(event.value);
               } else {
                   this.setValueFromSelect(event);

@@ -59,7 +59,7 @@
 <h3>ad-select</h3>
 
 <ad-select [values]="select2Values" [(ngModel)]="select2Selected" id="mySelect"></ad-select>
-<span>selected : {{ select2Selected.text }}</span>
+<span>selected : {{ select2Selected | json }}</span>
 
 <h3>ad-tabs</h3>
 <div style="position: relative;background: #efefef;padding: 20px;border-radius: 10px;">
