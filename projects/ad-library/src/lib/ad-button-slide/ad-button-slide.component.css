@@ -1,3 +1,53 @@
+
+:host {
+  --ad-slide-bg: transparent;
+  --ad-slide-bg-over: #69696a;
+  --ad-slide-fg: #69696a;
+  --ad-slide-fg-over: white;
+}
+
+:host.button-slide-danger {
+  --ad-slide-bg: transparent;
+  --ad-slide-bg-over: #dc3545;
+  --ad-slide-fg: #dc3545;
+  --ad-slide-fg-over: white;
+}
+
+:host.button-slide-warning {
+  --ad-slide-bg: transparent;
+  --ad-slide-bg-over: #ffc107;
+  --ad-slide-fg: #ffc107;
+  --ad-slide-fg-over: #363636;
+}
+
+:host.button-slide-primary {
+  --ad-slide-bg: transparent;
+  --ad-slide-bg-over: #007bff;
+  --ad-slide-fg: #007bff;
+  --ad-slide-fg-over: white;
+}
+
+:host.button-slide-info {
+  --ad-slide-bg: transparent;
+  --ad-slide-bg-over: #17a2b8;
+  --ad-slide-fg: #17a2b8;
+  --ad-slide-fg-over: white;
+}
+
+:host.button-slide-success {
+  --ad-slide-bg: transparent;
+  --ad-slide-bg-over: #28a745;
+  --ad-slide-fg: #28a745;
+  --ad-slide-fg-over: white;
+}
+
+button {
+  border: 0;
+  background: 0;
+  padding: 0;
+  margin: 0;
+}
+
 .btn-slide {
   position: relative;
   width: 45px;
@@ -11,6 +61,15 @@
   -ms-transition: all 0.3s cubic-bezier(0.54, 0.02, 0, 1.69);
   -o-transition: all 0.3s cubic-bezier(0.54, 0.02, 0, 1.69);
   transition: all 0.3s cubic-bezier(0.54, 0.02, 0, 1.69);
+
+  background: var(--ad-slide-bg);
+  color: var(--ad-slide-fg);
+
+}
+
+.btn-slide:hover {
+  background: var(--ad-slide-bg-over);
+  color: var(--ad-slide-fg-over);
 }
 
 .btn-slide.mini {

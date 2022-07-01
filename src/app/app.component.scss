@@ -60,5 +60,13 @@ border-color: #005cbf;
   padding: 15px;
 }
 
+/*
+You can also override an existing button-slide class
+Example :
+::ng-deep .button-slide-danger button {
+  --ad-slide-bg-over: red;
+  --ad-slide-fg: red;
+}
+*/
 
 
