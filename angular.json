@@ -31,7 +31,12 @@
               "node_modules/jquery/dist/jquery.js",
               "node_modules/select2/dist/js/select2.js"
             ],
-            "aot": true
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -61,7 +66,8 @@
                 }
               ]
             }
-          }
+          },
+          "defaultConfiguration": ""
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",

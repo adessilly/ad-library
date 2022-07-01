@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AdSelectElement } from 'projects/ad-library/src/public_api';
+import { AdSelectElement } from 'projects/ad-library/src/public-api';
 
 @Component({
   selector: 'app-root',
