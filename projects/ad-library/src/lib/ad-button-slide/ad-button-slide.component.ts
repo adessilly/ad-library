@@ -7,17 +7,17 @@ import { Component, OnInit, Input, ViewChild, ElementRef, HostListener } from '@
 })
 export class AdButtonSlideComponent implements OnInit {
 
-  @Input() icon: string;
-  @Input() label: string;
+  @Input() icon!: string;
+  @Input() label!: string;
   @Input() background = '#aaa';
-  @Input() backgroundOver = null;
+  @Input() backgroundOver!: string;
   @Input() foreground = 'white';
-  @Input() foregroundOver = null;
+  @Input() foregroundOver!: string;
   @Input() mini = false;
 
   @Input() stopPropagation = true;
 
-  @ViewChild('adbuttonslidediv', { static: true }) div: ElementRef<any>;
+  @ViewChild('adbuttonslidediv', { static: true }) div!: ElementRef<any>;
 
   @HostListener('click', ['$event'])
   public onClick(event: MouseEvent): void {
@@ -32,11 +32,11 @@ export class AdButtonSlideComponent implements OnInit {
     this.initStateCss();
   }
 
-  public mouseOverButton($event) {
+  public mouseOverButton($event: any) {
     this.initStateCssOver();
   }
 
-  public mouseOutButton($event) {
+  public mouseOutButton($event: any) {
     this.initStateCss();
   }
 
@@ -50,7 +50,7 @@ export class AdButtonSlideComponent implements OnInit {
     this.changeCss('color', this.foregroundOver);
   }
 
-  public changeCss(property, value) {
+  public changeCss(property: string, value: string) {
     if (value === null) {
       return;
     }

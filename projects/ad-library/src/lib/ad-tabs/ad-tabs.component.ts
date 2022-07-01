@@ -14,7 +14,7 @@ export class AdTabsComponent implements AfterViewInit {
   @Input() styleClass = 'comp-tabs-theme1';
 
   @ContentChildren(AdTabPanelComponent)
-  tabPanels: QueryList<AdTabPanelComponent>;
+  tabPanels!: QueryList<AdTabPanelComponent>;
 
   constructor(private cdr: ChangeDetectorRef) {}
 

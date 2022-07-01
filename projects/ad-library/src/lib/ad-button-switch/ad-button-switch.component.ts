@@ -20,12 +20,12 @@ export class AdButtonSwitchComponent implements OnInit {
 
   @Input() labelOn = 'on';
   @Input() labelOff = 'off';
-  @Input() iconOn = null;
-  @Input() iconOff = null;
+  @Input() iconOn!: string;
+  @Input() iconOff!: string;
   @Input() theme = 'flip';
-  @Input() id;
+  @Input() id!: string;
 
-  ngValue: boolean;
+  ngValue!: boolean;
 
   onChangeCallback: any = () => {};
   onTouchedCallback: any = () => {};

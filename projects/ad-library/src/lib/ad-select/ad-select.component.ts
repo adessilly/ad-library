@@ -19,17 +19,17 @@ declare var $: any;
 export class AdSelectComponent implements AfterContentInit, ControlValueAccessor, OnChanges {
 
   public innerValue: any;
-  public onChangeCallback: any;
-  public onTouchedCallback: any;
+  public onChangeCallback!: (_:any) => void;
+  public onTouchedCallback!: () => void;
   public currentSelectValue: any;
   public simpleMode = true;
 
-  @Input() values: any[];
-  @Input() id: string;
+  @Input() values!: any[];
+  @Input() id!: string;
   @Input() required = false;
   @Input() readonly = false;
 
-  @ViewChild('select2', { static: true }) select2Html;
+  @ViewChild('select2', { static: true }) select2Html: any;
 
   constructor(private element: ElementRef) {
   }
@@ -50,7 +50,7 @@ export class AdSelectComponent implements AfterContentInit, ControlValueAccessor
   }
 
   // update select2 -> parent
-  updateData(event) {
+  updateData(event: any) {
 
       if (event) {
 
@@ -106,7 +106,7 @@ export class AdSelectComponent implements AfterContentInit, ControlValueAccessor
           multiple: (this.innerValue instanceof Array)
       });
 
-      jqSelect2.on('select2:close', function (e) {
+      jqSelect2.on('select2:close', function (e: any) {
           self.onTouchedCallback();
       });
 
@@ -188,10 +188,10 @@ export class AdSelectComponent implements AfterContentInit, ControlValueAccessor
   getSelect2Lang() {
       return {
         errorLoading: () => 'Le résultat ne peut être affiché.',
-        inputTooLong: args => 'Veuillez supprimer des caractères.',
-        inputTooShort: args => 'Veuillez saisir des caractères.',
-        loadingMore: args => 'Chargement des résultats...',
-        maximumSelected: args => 'Vous ne pouvez sélectionner que ' + args.maximum + ' valeurs',
+        inputTooLong: (args: any) => 'Veuillez supprimer des caractères.',
+        inputTooShort: (args: any) => 'Veuillez saisir des caractères.',
+        loadingMore: (args: any) => 'Chargement des résultats...',
+        maximumSelected: (args: any) => 'Vous ne pouvez sélectionner que ' + args.maximum + ' valeurs',
         noResults: () => 'Aucun résultat',
         searching: () => 'Recherche en cours...'
     };

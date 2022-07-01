@@ -7,9 +7,9 @@ import { Component, OnInit, TemplateRef, Input, ViewChild } from '@angular/core'
 })
 export class AdTabPanelComponent implements OnInit {
 
-  @ViewChild(TemplateRef, { static: false }) template: TemplateRef<any>;
-  @Input() label: string;
-  @Input() icon: string;
+  @ViewChild(TemplateRef, { static: false }) template!: TemplateRef<any>;
+  @Input() label!: string;
+  @Input() icon!: string;
   @Input() titleMessage = '';
   @Input() withStyle = false;
   @Input() disabled = false;

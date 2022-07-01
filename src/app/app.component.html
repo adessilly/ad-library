@@ -4,7 +4,7 @@
 <div class="bar" (click)="askConsultRow()">
 
   <ad-button-slide icon="fas fa-trash" label="Delete this" background="#c3615f" (click)="askDelete()"></ad-button-slide>
-  <ad-button-slide icon="fas fa-pencil-alt" label="Edit this" background="#5f82c3" backgroundOver="#5f82c399" foregroundOver="#333"></ad-button-slide>
+  <ad-button-slide icon="fas fa-pencil-alt" label="Edit this" background="#5f82c3" [backgroundOver]="'#5f82c399'" [foregroundOver]="'#333'"></ad-button-slide>
   <ad-button-slide icon="fas fa-plus" label="Add this" background="#55c16c"></ad-button-slide>
 
 </div>
@@ -12,8 +12,8 @@
 <h4>With text-align:right (and mode mini)</h4>
 <div class="bar" style="text-align:right;height:30px;">
 
-  <ad-button-slide mini="1" icon="fas fa-trash" label="Delete this"></ad-button-slide>
-  <ad-button-slide mini="1" icon="fas fa-pencil-alt" label="Edit this"></ad-button-slide>
+  <ad-button-slide [mini]="true" icon="fas fa-trash" label="Delete this"></ad-button-slide>
+  <ad-button-slide [mini]="true" icon="fas fa-pencil-alt" label="Edit this"></ad-button-slide>
 
 </div>
 
