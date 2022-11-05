@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AdSelectElement } from 'projects/ad-library/src/public-api';
 
 @Component({
@@ -11,6 +12,7 @@ export class AppComponent {
   checkValue = false;
   checkValue2 = false;
   loading = false;
+  formGroup!: FormGroup;
 
   select2Selected: AdSelectElement = { text: 'Label 5', id: '4', /* value: monObjetLié */ };
   select2Values: AdSelectElement[] = [
@@ -21,6 +23,12 @@ export class AppComponent {
     { text: 'Label 4', id: '3', /* value: monObjetLié */ } as AdSelectElement,
     this.select2Selected
   ];
+
+  constructor(public fb: FormBuilder) {
+    this.formGroup = this.fb.group({
+      "married": [null, Validators.required]
+    });
+  }
 
   askDelete() {
     console.log('ask delete');

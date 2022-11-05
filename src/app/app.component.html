@@ -1,5 +1,12 @@
 <h3>ad-button-slide</h3>
 
+
+<form [formGroup]="formGroup">
+  val {{ formGroup.controls['married'].value }}
+  <ad-button-switch formControlName="married" theme="switch" id="test"></ad-button-switch>
+</form>
+
+
 <h4>With text-align:left (button edit with backgroundOver)</h4>
 <div class="bar" (click)="askConsultRow()">
 
@@ -96,4 +103,3 @@
     </ad-tab-panel>
   </ad-tabs>
 </div>
-
