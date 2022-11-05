@@ -70,4 +70,9 @@ export class AdButtonSwitchComponent implements OnInit {
     }
     this.setValueFromComponent(this.ngValue);
   }
+
+  toggleCheck(input: any) {
+    input.checked = !input.checked;
+  }
+
 }

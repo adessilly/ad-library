@@ -18,8 +18,8 @@ class="flip-button"
     type="checkbox"
     [name]="id + '_switch'"
     class="switch-button-checkbox"
-    [id]="id + '_switch'"
     [ngModel]="ngValue"
-    (ngModelChange)="switchValue()">
-    <label class="switch-button-label" [for]="id + '_switch'"></label>
+    (ngModelChange)="switchValue()"
+    #input>
+    <label class="switch-button-label" (click)="toggleCheck(input)"></label>
 </div>
