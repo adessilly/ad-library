@@ -1,12 +1,5 @@
 <h3>ad-button-slide</h3>
 
-
-<form [formGroup]="formGroup">
-  val {{ formGroup.controls['married'].value }}
-  <ad-button-switch formControlName="married" theme="switch" id="test"></ad-button-switch>
-</form>
-
-
 <h4>With text-align:left (button edit with backgroundOver)</h4>
 <div class="bar" (click)="askConsultRow()">
 
@@ -40,6 +33,12 @@
 <ad-button-switch [(ngModel)]="checkValue" id="flip1" style="display:block;width:110px;margin-bottom:10px;" iconOn="fas fa-check" labelOn="not received" iconOff="fas fa-times" labelOff="received"></ad-button-switch>
 <h4>theme switch</h4>
 <ad-button-switch [(ngModel)]="checkValue" id="switch1" theme="switch"></ad-button-switch>
+
+<form [formGroup]="formGroup">
+  Within formgroup
+  <ad-button-switch formControlName="married" theme="switch" id="test"></ad-button-switch>
+</form>
+
 
 <h4>test encapsulation</h4>
 <ad-button-switch [(ngModel)]="checkValue2" theme="switch" id="switch2"></ad-button-switch>
