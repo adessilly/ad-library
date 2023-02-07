@@ -14,12 +14,12 @@ class="flip-button"
 </div>
 
 <div class="switch-button" *ngIf="theme === 'switch'">
-    <input
-    type="checkbox"
-    [name]="id + '_switch'"
-    class="switch-button-checkbox"
-    [id]="id + '_switch'"
-    [ngModel]="ngValue"
-    (ngModelChange)="switchValue()">
-    <label class="switch-button-label" [for]="id + '_switch'"></label>
+    <label class="switch-button-label" [class.switch-button-checked]="input && input.checked">
+      <input
+      type="checkbox"
+      class="switch-button-checkbox"
+      [ngModel]="ngValue"
+      (ngModelChange)="switchValue()"
+      #input>
+    </label>
 </div>

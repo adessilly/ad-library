@@ -28,12 +28,12 @@
   transition: all 0.3s cubic-bezier(.52,0,.58,1.45) 0s;
   box-sizing: content-box;
 }
-.switch-button-checkbox:checked + .switch-button-label {
+.switch-button-label.switch-button-checked {
   background-color: #86d993;
 }
-.switch-button-checkbox:checked + .switch-button-label, .switch-button-checkbox:checked + .switch-button-label:before {
+.switch-button-label.switch-button-checked, .switch-button-checked.switch-button-label:before {
  border-color: #86d993;
 }
-.switch-button-checkbox:checked + .switch-button-label:before {
+.switch-button-checked.switch-button-label:before {
   right: 0px;
 }

@@ -23,7 +23,6 @@ export class AdButtonSwitchComponent implements OnInit {
   @Input() iconOn!: string;
   @Input() iconOff!: string;
   @Input() theme = 'flip';
-  @Input() id!: string;
 
   ngValue!: boolean;
 
@@ -33,9 +32,11 @@ export class AdButtonSwitchComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
+    /*
     if (!this.id && this.theme === 'switch') {
       throw new Error('Attribute id is required for AdSwitchComponent with theme switch');
     }
+    */
   }
 
   setValueFromComponent(v: boolean) {
@@ -70,4 +71,10 @@ export class AdButtonSwitchComponent implements OnInit {
     }
     this.setValueFromComponent(this.ngValue);
   }
+
+  toggleCheck(input: any) {
+    input.checked = !input.checked;
+    this.switchValue();
+  }
+
 }
