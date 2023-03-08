@@ -113,7 +113,7 @@ export class AdSelectComponent implements AfterContentInit, ControlValueAccessor
 
       if(this.autofocusSearch) {
         const result = jqSelect2.on('select2:open', (e: any) => {
-          const searchField: any = document.querySelector('.select2-dropdown.select2-dropdown--below .select2-search__field');
+          const searchField: any = document.querySelector('.select2-dropdown .select2-search__field');
           if (searchField) {
            searchField.focus();
           }
