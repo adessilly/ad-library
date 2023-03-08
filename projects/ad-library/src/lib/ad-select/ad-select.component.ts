@@ -1,6 +1,6 @@
 import {
   Component, Input, ElementRef, OnChanges, AfterContentInit,
-  SimpleChanges, ViewChild, forwardRef
+  SimpleChanges, ViewChild, forwardRef, OnDestroy
 } from '@angular/core';
 import {NG_VALUE_ACCESSOR, ControlValueAccessor} from '@angular/forms';
 
@@ -28,6 +28,7 @@ export class AdSelectComponent implements AfterContentInit, ControlValueAccessor
   @Input() id!: string;
   @Input() required = false;
   @Input() readonly = false;
+  @Input() autofocusSearch = true;
 
   @ViewChild('select2', { static: true }) select2Html: any;
 
@@ -109,6 +110,15 @@ export class AdSelectComponent implements AfterContentInit, ControlValueAccessor
       jqSelect2.on('select2:close', function (e: any) {
           self.onTouchedCallback();
       });
+
+      if(this.autofocusSearch) {
+        const result = jqSelect2.on('select2:open', (e: any) => {
+          const searchField: any = document.querySelector('.select2-dropdown.select2-dropdown--below .select2-search__field');
+          if (searchField) {
+           searchField.focus();
+          }
+        });
+      }
 
       // -> setValue (oninit)
       if (this.innerValue) {
