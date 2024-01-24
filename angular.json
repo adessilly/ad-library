@@ -71,18 +71,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ad-library-project:build"
+            "buildTarget": "ad-library-project:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ad-library-project:build:production"
+              "buildTarget": "ad-library-project:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ad-library-project:build"
+            "buildTarget": "ad-library-project:build"
           }
         },
         "test": {
