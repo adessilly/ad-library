@@ -64,7 +64,11 @@
 
 <h3>ad-select</h3>
 
-<ad-select [values]="select2Values" [(ngModel)]="select2Selected" id="mySelect"></ad-select>
+<div style="width:400px;">
+  <ad-select [readonly]="readOnly" [placeholder]="'Sélectionner'" [values]="select2Values" [(ngModel)]="select2Selected"></ad-select>
+  <br />
+  <button (click)="select2Selected = []">Clear</button>
+</div>
 <span>selected : {{ select2Selected | json }}</span>
 
 <h3>ad-tabs</h3>

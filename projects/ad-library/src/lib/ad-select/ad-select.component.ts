@@ -1,10 +1,11 @@
 import {
-  Component, Input, ElementRef, OnChanges, AfterContentInit,
-  SimpleChanges, ViewChild, forwardRef, OnDestroy
+  Component, Input, OnChanges,
+  SimpleChanges, ViewChild, forwardRef, AfterViewInit
 } from '@angular/core';
 import {NG_VALUE_ACCESSOR, ControlValueAccessor} from '@angular/forms';
+import { AdSelectElement } from './ad-select-element.interface';
+import Choices from 'choices.js';
 
-declare var $: any;
 
 @Component({
   providers: [{
@@ -16,219 +17,142 @@ declare var $: any;
   templateUrl: 'ad-select.component.html',
   styleUrls: ['ad-select.component.css']
 })
-export class AdSelectComponent implements AfterContentInit, ControlValueAccessor, OnChanges {
+export class AdSelectComponent implements AfterViewInit, ControlValueAccessor, OnChanges {
 
-  public innerValue: any;
   public onChangeCallback!: (_:any) => void;
   public onTouchedCallback!: () => void;
-  public currentSelectValue: any;
-  public simpleMode = true;
 
-  @Input() values!: any[];
-  @Input() id!: string;
-  @Input() required = false;
+  public currentSelectId: string | string[] | null = null;
+
+  @Input() values: AdSelectElement[] = [];
   @Input() readonly = false;
-  @Input() autofocusSearch = true;
+  @Input() placeholder : string | null = null;
+  @Input() showSelectedItems = true;
+  multiple = true;
 
-  @ViewChild('select2', { static: true }) select2Html: any;
+  @ViewChild('selectHTML', { static: true }) selectHTML: any;
+  choiceSelect: any | null = null;
 
-  constructor(private element: ElementRef) {
+  constructor() {
+  }
+
+  refreshSelect() {
+    setTimeout(() => {
+      this.choiceSelect?.destroy();
+      const options = {
+        removeItemButton: true,
+        placeholder: this.placeholder ? true : false,
+        placeholderValue: this.placeholder,
+        loadingText: 'Chargement...',
+        noResultsText: 'Pas de résultats',
+        noChoicesText: 'Pas de choix à sélectionner',
+        itemSelectText: '',
+        uniqueItemText: 'Seule une valeur peut être ajoutée',
+        customAddItemText: 'Seules les valeurs correspondant à des conditions spécifiques peuvent être ajoutées',
+      };
+      this.choiceSelect = new Choices(this.selectHTML.nativeElement, options);
+      const values = this.mergeValuesWithSelectValues();
+      this.choiceSelect.setChoices(values, 'id', 'text', false);
+
+    });
+  }
+
+  isSelected(id: string): boolean {
+    const ids = Array.isArray(this.currentSelectId) ? this.currentSelectId : [this.currentSelectId];
+    return ids.includes(id);
+  }
+
+  mergeValuesWithSelectValues() {
+      return this.values.map(v => {
+        return {
+          id: v.id,
+          text: v.text,
+          selected: this.isSelected(v.id)
+        }
+      });
   }
 
   // @Override AfterContentInit
-  ngAfterContentInit() {
-      this.initSelect2();
-  }
-
-  setValueFromSelect(v: any) {
-      this.innerValue = v;
-      this.onChangeCallback(v);
-  }
-
-  setValueFromParent(v: any) {
-      this.innerValue = v;
-      this.initSelect2();
-  }
-
-  // update select2 -> parent
-  updateData(event: any) {
-
-      if (event) {
-
-          if (event instanceof Array) {
-
-              let valArray: Object[] = [];
-              for (const item of event) {
-                  if (item.value !== undefined) {
-                      valArray = [...valArray, item.value];
-                  } else {
-                      valArray = [...valArray, item];
-                  }
-              }
-
-              this.setValueFromSelect(valArray);
-
-          } else {
-
-              if (event.value !== undefined) {
-                  this.setValueFromSelect(event.value);
-              } else {
-                  this.setValueFromSelect(event);
-              }
-          }
-      }
-
-  }
-
-  /**
-   * Vider le select2 au cas où il existait déjà
-   */
-  emptySelect2() {
-      const jqSelect2: any = $(this.select2Html.nativeElement);
-      jqSelect2.select2({data: null, language: this.getSelect2Lang});
-      jqSelect2.html('');
-      jqSelect2.off('change');
-      jqSelect2.off('select2:close');
-  }
-
-  /**
-   * Initialiser le select2
-   */
-  initSelect2() {
-      this.emptySelect2();
-      const self = this;
-
-      // init select2
-      const jqSelect2: any = $(this.select2Html.nativeElement);
-      jqSelect2.select2({
-          data: this.values,
-          language: this.getSelect2Lang,
-          width: '100%',
-          multiple: (this.innerValue instanceof Array)
-      });
-
-      jqSelect2.on('select2:close', function (e: any) {
-          self.onTouchedCallback();
-      });
-
-      if(this.autofocusSearch) {
-        const result = jqSelect2.on('select2:open', (e: any) => {
-          const searchField: any = document.querySelector('.select2-dropdown .select2-search__field');
-          if (searchField) {
-           searchField.focus();
-          }
-        });
-      }
-
-      // -> setValue (oninit)
-      if (this.innerValue) {
-          this.currentSelectValue = this.convertValueForSelect2(this.innerValue);
-          jqSelect2.val(this.currentSelectValue).trigger('change');
-      }
-
-      // <- getValue (onchange)
-      jqSelect2.on('change', function() {
-          const obj = jqSelect2.select2('val');
-          let val = null;
-          if (obj instanceof Array) {
-              val = self.findArrayObjFromArrayVal(obj);
-          } else {
-              val = self.findObjFromVal(obj);
-          }
-          self.updateData(val);
-      });
-
-  }
-
-  // Pour sélectionner un élément dans le select2, il ne faut pas fournir l'objet,
-  // mais l'id de cet objet. Si c'est un array, c'est un array d'ids
-  convertValueForSelect2(obj: any): any {
-      if (obj instanceof Array) {
-          return this.convertArrayObjToArrayId(obj);
-      } else {
-          return this.convertObjToId(obj);
-      }
-  }
-
-  // Convertir un array d'objets en array d'ids (voir convertValueForSelect2)
-  convertArrayObjToArrayId(arrayObj: Object[]): string[] {
-      let arraySelect2Vals: string[] = [];
-
-      for (const value of arrayObj) {
-          const select2val = this.convertObjToId(value);
-          arraySelect2Vals = [ ...arraySelect2Vals, select2val ];
-      }
-
-      return arraySelect2Vals;
-  }
-
-  // Convertir un objets en string contenant l'id (voir convertValueForSelect2)
-  // ou renvoyer un string
-  convertObjToId(obj: any): string {
-      if (obj.id) {
-          return obj.id;
-      } else {
-          return obj.toString();
-      }
-  }
-
-  findArrayObjFromArrayVal(valArrayFromSelect2: Array<Object>) {
-      let objectValue: Object[] = [];
-      for (const value of valArrayFromSelect2) {
-        const select2Val = this.findObjFromVal(value);
-          if (select2Val != null) {
-              objectValue = [...objectValue, select2Val];
-          }
-      }
-      return objectValue;
-  }
-
-  findObjFromVal(val: any) {
-      for (const value of this.values) {
-          if (value.id && '' + value.id === '' + val) {
-              return value;
-          }
-          if (!value.id && '' + value.id === '' + val) {
-              return value;
-          }
-      }
-      return null;
-  }
-
-  getSelect2Lang() {
-      return {
-        errorLoading: () => 'Le résultat ne peut être affiché.',
-        inputTooLong: (args: any) => 'Veuillez supprimer des caractères.',
-        inputTooShort: (args: any) => 'Veuillez saisir des caractères.',
-        loadingMore: (args: any) => 'Chargement des résultats...',
-        maximumSelected: (args: any) => 'Vous ne pouvez sélectionner que ' + args.maximum + ' valeurs',
-        noResults: () => 'Aucun résultat',
-        searching: () => 'Recherche en cours...'
-    };
-  }
-
-  // on change PARENT COMPOSANT -> SELECT COMPOSANT
-  // ->Si on modifie dans un composant parent la valeur, il faut rafraîchir la select
-  // pour peut être sélectionner ou désélectinoner la select
-  // https://angular.io/docs/ts/latest/api/core/index/OnChanges-class.html
-  // @Override ControlValueAccessor
-  writeValue(v: any) {
-      this.setValueFromParent(v);
+  ngAfterViewInit() {
+    this.refreshSelect();
   }
 
   // ngChange doit aussi être utilisé si on change la liste (et pas l'element selectionne)
   ngOnChanges(changes: SimpleChanges) {
-      this.initSelect2();
+    if(this.selectHTML) {
+      this.refreshSelect();
+    }
+  }
+
+  setValueFromSelect(ids: string | string[]) {
+    ids = Array.isArray(ids) ? ids : [ids];
+    this.currentSelectId = ids;
+    const objects = this.getObjectsFromIds(ids);
+    const value = this.multiple ? objects : (objects.length > 0 ? objects[0] : null);
+    this.onChangeCallback(value);
+  }
+
+  getObjectsFromIds(ids: string[]): any[] | string[] {
+    return this.values.filter(v => ids.includes(v.id)).map(v => v.value? v.value : v);
+  }
+
+  setValueFromParent(obj: any) {
+    this.multiple = Array.isArray(obj);
+    if (this.multiple) {
+      this.selectValuesFromArrayObjects(obj);
+    } else {
+      this.selectValuesFromObject(obj);
+    }
+    this.refreshSelect();
+  }
+
+  selectValuesFromArrayObjects(objects: any[]) {
+    this.currentSelectId = [];
+    for(const obj of objects) {
+      const value = this.getValueFromObject(obj);
+      const id = value ? value.id : null;
+      if(value && id) {
+        this.currentSelectId.push(id);
+      }
+    }
+  }
+
+  selectValuesFromObject(object: any) {
+    this.currentSelectId = [];
+    const value = this.getValueFromObject(object);
+    const id = value ? value.id : null;
+    if(value && id) {
+      this.currentSelectId = id;
+    }
+  }
+
+  getValueFromObject(obj: any):AdSelectElement | null {
+    const index = this.values.findIndex(v => {
+      const shouldCompareId = obj?.id !== undefined && obj?.id !== null;
+      return this.compareObjectReferenceOrProperties(shouldCompareId ? v.id : v.value ?? v, shouldCompareId ? obj.id : obj)
+    });
+    return index >= 0 ? this.values[index] : null;
+  }
+
+  compareObjectReferenceOrProperties(obj1: any, obj2: any): boolean {
+    return obj1 === obj2 || JSON.stringify(obj1) === JSON.stringify(obj2);
+  }
+
+  // on change PARENT COMPOSANT -> SELECT COMPOSANT
+  // @Override ControlValueAccessor
+  writeValue(v: any) {
+    this.setValueFromParent(v);
+    console.log('writeValue', this.currentSelectId);
   }
 
   // @Override ControlValueAccessor
   registerOnChange(fn: any) {
-      this.onChangeCallback = fn;
+    this.onChangeCallback = fn;
   }
 
   // @Override ControlValueAccessor
   registerOnTouched(fn: any) {
-      this.onTouchedCallback = fn;
+    this.onTouchedCallback = fn;
   }
 
 }

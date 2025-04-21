@@ -1,1 +1,12 @@
-<select #select2 class="form-control" id="{{id}}" [required]="required" [disabled]="readonly"></select>
+
+<select #selectHTML
+  [(ngModel)]="currentSelectId"
+  (ngModelChange)="setValueFromSelect($event)"
+  [multiple]="multiple"
+  [disabled]="readonly">
+  <!--
+  <option *ngFor="let value of values" [value]="value.id" [attr.selected]="true">
+    {{ value.text }}
+  </option>
+  -->
+</select>

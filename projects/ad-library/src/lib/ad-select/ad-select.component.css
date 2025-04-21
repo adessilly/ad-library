@@ -1,0 +1,55 @@
+:host ::ng-deep .choices__inner  {
+  min-height: auto;
+  box-sizing: border-box;
+  background: white;
+  border: 1px solid #dde6e9;
+  border-radius: .25rem;
+  padding: 6px;
+}
+
+:host ::ng-deep .choices__inner:focus-within  {
+  border-color: #66afe9;
+}
+
+:host ::ng-deep .choices__input {
+  background: white;
+  padding: 0px;
+  margin: 0px;
+  padding-left: 4px;
+  top: 1px;
+  position: relative;
+}
+
+:host ::ng-deep .choices__list--dropdown.is-active {
+  z-index: 1000;
+}
+
+:host ::ng-deep .choices__list--single {
+  padding: 0px;
+}
+
+:host ::ng-deep .choices__list--dropdown .choices__item--selectable,
+:host ::ng-deep .choices__list .choices__item--selectable {
+  padding-right: 10px;
+}
+
+:host ::ng-deep .choices__list .choices__item--selectable {
+  padding-right: 5px;
+}
+
+:host ::ng-deep .choices[data-type*=select-multiple] .choices__button,
+:host ::ng-deep .choices[data-type*=text] .choices__button {
+  border-left: none;
+  background-color: #79878b;
+  border-radius: 100px;
+  margin-right: 1px;
+  padding-left: 8px;
+}
+
+:host ::ng-deep .choices__list--multiple .choices__item {
+  background-color: #f7f7f7;
+  border: 1px solid #dde6e9;
+  color: #495057;
+  margin: 0;
+  margin-left: 5px;
+}

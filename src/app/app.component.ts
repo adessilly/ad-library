@@ -13,15 +13,16 @@ export class AppComponent {
   checkValue2 = false;
   loading = false;
   formGroup!: FormGroup;
+  readOnly = false;
 
-  select2Selected: AdSelectElement = { text: 'Label 5', id: '4', /* value: monObjetLié */ };
+  select2Selected = [{nom:'label 5', prenom:'toto'}, { text: 'Label 2', id: '2' }];
   select2Values: AdSelectElement[] = [
-    { text: 'Label empty', id: '-1', /* value: monObjetLié */ value: null } as AdSelectElement,
-    { text: 'Label specific value', id: '0', /* value: monObjetLié */ value: '1' } as AdSelectElement,
-    { text: 'Label 2', id: '1', /* value: monObjetLié */ } as AdSelectElement,
-    { text: 'Label 3', id: '2', /* value: monObjetLié */ } as AdSelectElement,
-    { text: 'Label 4', id: '3', /* value: monObjetLié */ } as AdSelectElement,
-    this.select2Selected
+    { text: 'Label empty -1', id: '-1', /* value: monObjetLié */ value: null } as AdSelectElement,
+    { text: 'Label specific value ds qdqs qd qs dqs dqs dqsd qsd1', id: 'lol', /* value: monObjetLié */ value: 'dsqdsq' } as AdSelectElement,
+    this.select2Selected[1] as AdSelectElement,
+    { text: 'Label 3', id: '3', /* value: monObjetLié */ } as AdSelectElement,
+    { text: 'Label 4', id: '4', /* value: monObjetLié */ } as AdSelectElement,
+    { text: 'label 5', id: '5', value: this.select2Selected[0] }
   ];
 
   constructor(public fb: FormBuilder) {
