@@ -29,6 +29,7 @@ export class AdSelectComponent implements AfterContentInit, ControlValueAccessor
   @Input() required = false;
   @Input() readonly = false;
   @Input() autofocusSearch = true;
+  @Input() parentContainer: HTMLElement | null = null;
 
   @ViewChild('select2', { static: true }) select2Html: any;
 
@@ -100,12 +101,18 @@ export class AdSelectComponent implements AfterContentInit, ControlValueAccessor
 
       // init select2
       const jqSelect2: any = $(this.select2Html.nativeElement);
-      jqSelect2.select2({
-          data: this.values,
-          language: this.getSelect2Lang,
-          width: '100%',
-          multiple: (this.innerValue instanceof Array)
-      });
+
+      const config: any = {
+        data: this.values,
+        language: this.getSelect2Lang,
+        width: '100%',
+        multiple: (this.innerValue instanceof Array)
+      };
+      if(this.parentContainer) {
+        config.dropdownParent = this.parentContainer;
+      }
+
+      jqSelect2.select2(config);
 
       jqSelect2.on('select2:close', function (e: any) {
           self.onTouchedCallback();
