@@ -2,9 +2,10 @@ import { Component, AfterViewInit, EventEmitter, ChangeDetectorRef, Input, Outpu
 import { AdTabPanelComponent } from './ad-tab-panel/ad-tab-panel.component';
 
 @Component({
-  selector: 'ad-tabs',
-  templateUrl: './ad-tabs.component.html',
-  styleUrls: ['./ad-tabs.component.scss', './ad-tabs-theme.scss']
+    selector: 'ad-tabs',
+    templateUrl: './ad-tabs.component.html',
+    styleUrls: ['./ad-tabs.component.scss', './ad-tabs-theme.scss'],
+    standalone: false
 })
 export class AdTabsComponent implements AfterViewInit {
 

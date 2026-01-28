@@ -1,9 +1,10 @@
 import { Component, Input, HostListener } from '@angular/core';
 
 @Component({
-  selector: 'ad-button-slide',
-  templateUrl: './ad-button-slide.component.html',
-  styleUrls: ['./ad-button-slide.component.css']
+    selector: 'ad-button-slide',
+    templateUrl: './ad-button-slide.component.html',
+    styleUrls: ['./ad-button-slide.component.css'],
+    standalone: false
 })
 export class AdButtonSlideComponent {
 

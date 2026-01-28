@@ -2,19 +2,20 @@ import { Component, OnInit, Input, forwardRef, ViewEncapsulation } from '@angula
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-  selector: 'ad-button-switch',
-  templateUrl: './ad-button-switch.component.html',
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => AdButtonSwitchComponent),
-      multi: true
-    }
-  ],
-  styleUrls: [
-    './ad-button-switch-theme-flip.component.css',
-    './ad-button-switch-theme-switch.component.css'
-  ]
+    selector: 'ad-button-switch',
+    templateUrl: './ad-button-switch.component.html',
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => AdButtonSwitchComponent),
+            multi: true
+        }
+    ],
+    styleUrls: [
+        './ad-button-switch-theme-flip.component.css',
+        './ad-button-switch-theme-switch.component.css'
+    ],
+    standalone: false
 })
 export class AdButtonSwitchComponent implements OnInit {
 

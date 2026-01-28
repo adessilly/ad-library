@@ -7,14 +7,15 @@ import {NG_VALUE_ACCESSOR, ControlValueAccessor} from '@angular/forms';
 declare var $: any;
 
 @Component({
-  providers: [{
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => AdSelectComponent),
-      multi: true
-  }],
-  selector: 'ad-select',
-  templateUrl: 'ad-select.component.html',
-  styleUrls: ['ad-select.component.css']
+    providers: [{
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => AdSelectComponent),
+            multi: true
+        }],
+    selector: 'ad-select',
+    templateUrl: 'ad-select.component.html',
+    styleUrls: ['ad-select.component.css'],
+    standalone: false
 })
 export class AdSelectComponent implements AfterContentInit, ControlValueAccessor, OnChanges {
 

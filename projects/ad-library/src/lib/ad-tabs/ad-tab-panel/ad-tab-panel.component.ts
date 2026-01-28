@@ -1,9 +1,10 @@
 import { Component, OnInit, TemplateRef, Input, ViewChild } from '@angular/core';
 
 @Component({
-  selector: 'ad-tab-panel',
-  templateUrl: './ad-tab-panel.component.html',
-  styleUrls: ['./ad-tab-panel.component.scss']
+    selector: 'ad-tab-panel',
+    templateUrl: './ad-tab-panel.component.html',
+    styleUrls: ['./ad-tab-panel.component.scss'],
+    standalone: false
 })
 export class AdTabPanelComponent implements OnInit {
 
