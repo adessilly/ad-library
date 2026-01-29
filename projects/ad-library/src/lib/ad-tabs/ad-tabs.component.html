@@ -2,7 +2,7 @@
 <div class="comp-tabs" [ngClass]="styleClass">
 
   <div class="comp-tabs-header" [class.comp-tabs-header-admin]="isAdminContext">
-    <ng-container *ngFor="let panel of tabPanels; let i = index;">
+    @for (panel of tabPanels; track panel; let i = $index) {
       <div
         [title]="panel.titleMessage"
         class="comp-tabs-tab"
@@ -13,13 +13,15 @@
         <i class="comp-tabs-tab-icon" [ngClass]="panel.icon"></i>
         <span class="comp-tabs-tab-label">{{ panel.label }}</span>
       </div>
-    </ng-container>
+    }
   </div>
 
-  <ng-container *ngFor="let panel of tabPanels; let i = index">
-    <div class="comp-tabs-body" *ngIf="currentTab === i">
-      <ng-container *ngTemplateOutlet="panel.template"></ng-container>
-    </div>
-  </ng-container>
+  @for (panel of tabPanels; track panel; let i = $index) {
+    @if (currentTab === i) {
+      <div class="comp-tabs-body">
+        <ng-container *ngTemplateOutlet="panel.template"></ng-container>
+      </div>
+    }
+  }
 
 </div>
