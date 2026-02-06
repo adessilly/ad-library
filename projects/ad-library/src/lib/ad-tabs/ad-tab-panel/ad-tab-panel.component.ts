@@ -1,4 +1,4 @@
-import { Component, OnInit, TemplateRef, Input, ViewChild } from '@angular/core';
+import { Component, TemplateRef, Input, ViewChild, input } from '@angular/core';
 
 @Component({
     selector: 'ad-tab-panel',
@@ -6,7 +6,7 @@ import { Component, OnInit, TemplateRef, Input, ViewChild } from '@angular/core'
     styleUrls: ['./ad-tab-panel.component.scss'],
     standalone: false
 })
-export class AdTabPanelComponent implements OnInit {
+export class AdTabPanelComponent {
 
   @ViewChild(TemplateRef, { static: false }) template!: TemplateRef<any>;
   @Input() label!: string;
@@ -14,10 +14,7 @@ export class AdTabPanelComponent implements OnInit {
   @Input() titleMessage = '';
   @Input() withStyle = false;
   @Input() disabled = false;
-
-  constructor() { }
-
-  ngOnInit() {
-  }
+  
+  readonly route = input<string | string[] | null>(null);
 
 }

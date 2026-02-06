@@ -85,6 +85,17 @@
   </ad-tabs>
 </div>
 
+<h3>ad-tabs avec routes</h3>
+<div style="position: relative;background: #efefef;padding: 20px;border-radius: 10px;">
+  <ad-tabs>
+    <ad-tab-panel icon="fas fa-user" label="tab 1" [route]="'/testpage/tab1'" />
+    <ad-tab-panel icon="fas fa-home" label="tab 2" [route]="'/testpage/tab2'" />
+    <ad-tab-panel icon="fas fa-key" label="tab 3" [route]="'/testpage/tab3'" />
+    <ad-tab-panel icon="fas fa-key" label="tab 4 disabled" [disabled]="true" [route]="'/testpage/tab4'" />
+  </ad-tabs>
+  <router-outlet></router-outlet>
+</div>
+
 <h3>ad-tabs with custom theme</h3>
 <div style="position: relative;">
   <ad-tabs styleClass="custom-tabs">

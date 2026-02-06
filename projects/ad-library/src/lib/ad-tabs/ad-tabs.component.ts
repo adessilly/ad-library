@@ -1,5 +1,6 @@
 import { Component, AfterViewInit, EventEmitter, ChangeDetectorRef, Input, Output, ContentChildren, QueryList } from '@angular/core';
 import { AdTabPanelComponent } from './ad-tab-panel/ad-tab-panel.component';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'ad-tabs',
@@ -17,7 +18,10 @@ export class AdTabsComponent implements AfterViewInit {
   @ContentChildren(AdTabPanelComponent)
   tabPanels!: QueryList<AdTabPanelComponent>;
 
-  constructor(private cdr: ChangeDetectorRef) {}
+  constructor(
+    private cdr: ChangeDetectorRef,
+    private router: Router
+  ) {}
 
   private notifyCurrentTabChange() {
     this.currentTabChange.emit(this.currentTab);
@@ -36,6 +40,10 @@ export class AdTabsComponent implements AfterViewInit {
       return;
     }
     this.currentTab = tabIndex % this.tabPanels.length;
+    const routeToGo = this.tabPanels.toArray()[this.currentTab].route();
+    if(routeToGo) {
+      this.router.navigate(Array.isArray(routeToGo) ? routeToGo : [routeToGo]);
+    }
     this.detectChanges();
     this.notifyCurrentTabChange();
   }
